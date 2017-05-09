@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>timer</title>
+</head>
+<body>
+
+</body>
+<script>
+    
+ var nowTime= new Date();
+ var startTime=formatDateTime (nowTime);
+var endTime ='2017-4-6 13:54:00';
+var start = startTime.replace(new RegExp("-","gm"),"/");
+    var end = endTime.replace(new RegExp("-","gm"),"/");
+    //  alert(start);
+    // alert(end);
+
+    var nowTim=new Date(start).getTime();//开始时间
+    var endTim=new Date(end).getTime();//结束时间
+
+    var tim=endTim-nowTim;//获得开始到结束之间剩余时间 毫秒
+   // alert(tim);
+ 
+    if(tim>=0){
+        var day=Math.floor(tim/1000/60/60/24);
+ 
+        var hours=Math.floor(tim/1000/60/60%24);
+     
+        var min=Math.floor(tim/1000/60%60);
+   
+        var sec=Math.floor(tim/1000%60);
+    }
+
+var str=toTwo(day)+"天"+toTwo(hours)+"小时"+toTwo(min)+"分"+toTwo(sec)+"秒";
+
+    alert(str);
+
+
+
+
+
+
+
+function toTwo(s) {
+    return s<10?"0"+s: s; 
+}
+
+
+function formatDateTime(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    var minute = date.getMinutes();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var seconds = date.getSeconds();
+    seconds = seconds < 10 ? ('0' + seconds) : seconds;
+    return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ":" + seconds;
+};
+
+
+
+
+
+
+
+
+</script>
+</html>

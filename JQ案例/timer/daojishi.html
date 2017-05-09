@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		<span>天</span>
+		<span>小时</span>
+		<span>分钟</span>
+		<span>秒</span>
+	</div>
+	<div id="box1"></div>
+</body>
+<!-- 2018年还剩下多少天多少小时多少分钟多少秒 -->
+<script>
+function timGo () {
+	var box=document.getElementById("box");
+	var aSpan=box.getElementsByTagName("span");
+
+	var nowDate=new Date();
+	// var endDate=new Date("2017,4,7");
+	var str="2017-4-7 24:23:23"
+	var endDate=new Date(str.replace(/-/g,","));
+	console.log(endDate);
+
+	var nowTim=nowDate.getTime();//开始时间
+	var endTim=endDate.getTime();//结束时间
+	console.log(endTim);
+
+	var tim=endTim-nowTim;//获得开始到结束之间剩余时间 毫秒
+
+	// alert(tim);	
+	var day=Math.floor(tim/1000/60/60/24);
+	// alert(day)
+	var hours=Math.floor(tim/1000/60/60%24);
+	// alert(hours)
+	var min=Math.floor(tim/1000/60%60);
+	// alert(min)
+	var sec=Math.floor(tim/1000%60);
+	// alert(sec)
+	aSpan[0].innerHTML=bl(day)+"天";
+	aSpan[1].innerHTML=bl(hours)+"小时";
+	aSpan[2].innerHTML=bl(min)+"分";
+	aSpan[3].innerHTML=bl(sec)+"秒"; 
+}
+	timGo();//开始刷新时候的1秒停顿
+	setInterval(timGo, 1000);
+
+	//当数字小于10的时候自动补零
+	function bl(s) {
+		 return s<10?"0"+s: s; 
+	}
+
+
+
+</script>
+</html>
